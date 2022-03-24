@@ -21,7 +21,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/admin',adminRoutes.routes);
 app.use(shopRoutes);
 app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(rootDir,'views', 'page-not-found.html'));
+    //res.status(404).sendFile(path.join(rootDir,'views', '404.html'));
+    res.status(404).render('404',{docTitle:'Page not found!'});
 });
 
 //const server = http.createServer(app);

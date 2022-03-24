@@ -16,15 +16,18 @@ html(lang="en")
                     li.main-header__item
                         a(href="/admin/add-product") Add Product
         main
-            .grid
-                each product in prods
-                    article.card.product-item 
-                        header.card__header 
-                            h1.product__title #{product.title} 
-                        div.card__image
-                            img(src="https://pixabay.com/get/g06712938372d95bbb0d3902f21832fcb61b6962b419d5d69f2361705548269d95e84748fd85303bd7c179367814f9fd59c3af145a459c9874749455a5ecfbbc894b17cb3e4026ebd29aac0dbe7e982ca_1280.png", alt="A book")
-                        .card__content 
-                            h2.product__price $19.99
-                            p.product__description A very useful book and has many pictures.
-                        .card__actions
-                            button.btn Add to cart
+            if prods.length > 0
+                .grid
+                    each product in prods
+                        article.card.product-item 
+                            header.card__header 
+                                h1.product__title #{product.title} 
+                            div.card__image
+                                img(src="https://pixabay.com/get/g06712938372d95bbb0d3902f21832fcb61b6962b419d5d69f2361705548269d95e84748fd85303bd7c179367814f9fd59c3af145a459c9874749455a5ecfbbc894b17cb3e4026ebd29aac0dbe7e982ca_1280.png", alt="A book")
+                            .card__content 
+                                h2.product__price $19.99
+                                p.product__description A very useful book and has many pictures.
+                            .card__actions
+                                button.btn Add to cart
+            else  
+                h1 No Products 
