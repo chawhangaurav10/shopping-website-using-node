@@ -5,10 +5,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
-const rootDir = require('./util/path');
 const path = require('path');
+const errorController = require('./controller/error');
 
 
 const app = express();
@@ -21,10 +22,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/admin',adminRoutes.routes);
 app.use(shopRoutes);
-app.use((req,res,next)=>{
-    //res.status(404).sendFile(path.join(rootDir,'views', '404.html'));
-    res.status(404).render('404',{pageTitle:'Page not found!'});
-});
+app.use(errorController.get404);
 
 //const server = http.createServer(app);
 //server.listen(3000);
