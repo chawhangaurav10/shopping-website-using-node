@@ -4,7 +4,7 @@ const requestHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
   if (url === "/") {
-      console.log(1);
+      
     res.setHeader("Content-Type", "text/html");
     res.write(
       '<html><body><form action="/message" method= "POST"><input type ="text" name="message"></input><button type="submit">Send</button></form></body></html>'
@@ -19,14 +19,14 @@ const requestHandler = (req, res) => {
       body.push(chunk);
     });
     return req.on("end", () => {
-        console.log(2);
+        
       const parseBody = Buffer.concat(body).toString();
       const message = parseBody.split("=")[1];
       fs.writeFile("message.txt", message, (err) => {
         res.statusCode = 302;
         res.setHeader("Location", "/");
         return res.end();
-        console.log(1);
+       
       });
     });
   }
